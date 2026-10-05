@@ -1,0 +1,18 @@
+/* Animations shared by every level: cameras, lasers, loot, the player. */
+@keyframes cam-sweep { 0%, 100% { transform: rotate(-16deg); } 50% { transform: rotate(16deg); } }
+@keyframes cam-lens { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+@keyframes cam-led { 0%, 45% { opacity: 1; } 50%, 95% { opacity: 0.1; } 100% { opacity: 1; } }
+@keyframes laser-pulse { 0%, 100% { box-shadow: inset 0 0 6px rgba(239,68,68,0.25); } 50% { box-shadow: inset 0 0 16px rgba(239,68,68,0.7), 0 0 8px rgba(239,68,68,0.35); } }
+@keyframes laser-scan { 0% { top: 6%; opacity: 0; } 15%, 85% { opacity: 1; } 100% { top: 90%; opacity: 0; } }
+@keyframes player-hop { 0% { transform: translateY(-6px) scale(0.85); } 60% { transform: translateY(1px) scale(1.05); } 100% { transform: translateY(0) scale(1); } }
+.cam-sweep { transform-box: fill-box; transform-origin: 50% 0%; animation: cam-sweep 2.4s ease-in-out infinite; }
+.cam-lens { animation: cam-lens 1.2s ease-in-out infinite; }
+.cam-led { animation: cam-led 1s steps(1) infinite; }
+.laser-cell { animation: laser-pulse 1.4s ease-in-out infinite; overflow: hidden; }
+.laser-cell::after { content: ""; position: absolute; left: 8%; right: 8%; height: 2px; border-radius: 2px; background: #f87171; box-shadow: 0 0 6px 1px rgba(248,113,113,0.9); animation: laser-scan 1.4s linear infinite; }
+@keyframes bag-shake { 0%, 55%, 100% { transform: rotate(0deg) translateX(0); } 6% { transform: rotate(-14deg) translateX(-1px); } 14% { transform: rotate(14deg) translateX(1px); } 22% { transform: rotate(-11deg) translateX(-1px); } 30% { transform: rotate(11deg) translateX(1px); } 38% { transform: rotate(-6deg); } 46% { transform: rotate(5deg); } }
+.bag-shake { transform-box: fill-box; transform-origin: 50% 90%; animation: bag-shake 1.4s ease-in-out infinite; }
+.player-hop { animation: player-hop 300ms ease-out; }
+@media (prefers-reduced-motion: reduce) {
+  .cam-sweep, .cam-lens, .cam-led, .bag-shake, .laser-cell, .laser-cell::after, .player-hop { animation: none; }
+}
