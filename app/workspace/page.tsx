@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function WorkspacePage() {
   return (
     <div className="flex min-h-screen flex-col bg-background text-foreground lg:h-screen lg:overflow-hidden">
-      <Navbar active="workspace" />
+      <Navbar />
       <div className="flex flex-1 flex-col lg:min-h-0 lg:flex-row">
         <ActivityRail />
         <RepoPanel />
