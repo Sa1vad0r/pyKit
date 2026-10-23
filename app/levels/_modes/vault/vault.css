@@ -1,0 +1,24 @@
+/* Vault mode: keypad, door, alarm lights. */
+@keyframes digit-flip { 0% { opacity: 0; transform: translateY(-6px); } 100% { opacity: 1; transform: translateY(0); } }
+@keyframes light-flash { 0%, 100% { opacity: 1; } 50% { opacity: 0.15; } }
+@keyframes door-shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-3px); } 75% { transform: translateX(3px); } }
+@keyframes wheel-spin { from { transform: rotate(0deg); } to { transform: rotate(540deg); } }
+@keyframes chick-cheer { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+@keyframes chick-shiver { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-2px); } 75% { transform: translateX(2px); } }
+@keyframes match-pulse { 0%, 100% { box-shadow: 0 0 0 rgba(251,191,36,0); } 50% { box-shadow: 0 0 14px rgba(251,191,36,0.7); } }
+.digit-flip { animation: digit-flip 0.25s ease-out; }
+.light-flash { animation: light-flash 0.4s steps(1) infinite; }
+.vault-shake { animation: door-shake 0.12s linear infinite; }
+.bolts { transition: transform 0.5s ease-out; }
+.bolts-open { transform: translateX(-28px); }
+.vault-door { transform-box: fill-box; transform-origin: 0% 50%; transition: transform 0.9s ease-in-out 0.6s; }
+.vault-door-open { transform: scaleX(0.14); }
+.wheel { transform-box: fill-box; transform-origin: center; }
+.wheel-spin { animation: wheel-spin 0.8s ease-in-out forwards; }
+.chick-cheer { animation: chick-cheer 0.5s ease-in-out infinite; }
+.chick-shiver { animation: chick-shiver 0.1s linear infinite; }
+.match-pulse { animation: match-pulse 0.8s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .digit-flip, .light-flash, .vault-shake, .wheel-spin, .chick-cheer, .chick-shiver, .match-pulse { animation: none; }
+  .bolts, .vault-door { transition: none; }
+}

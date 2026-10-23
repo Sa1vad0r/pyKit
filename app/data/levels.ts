@@ -1,3 +1,5 @@
+import { MISSIONS } from "../levels/_missions";
+
 export interface LevelData {
   levelNumber: number;
   name: string;
@@ -11,37 +13,8 @@ export interface LevelData {
   locked?: boolean;
 }
 
-export const initialLevels: LevelData[] = [
-  {
-    levelNumber: 1,
-    name: "The Casing",
-    description: "Scope the place out. Variables 101.",
-    current: 5,
-    total: 5,
-    difficulty: "Beginner",
-    category: "Tutorial",
-    href: "/levels/1",
-  },
-  {
-    levelNumber: 2,
-    name: "The Camera Gauntlet",
-    description: "Dodge three cameras, bag three diamonds.",
-    current: 3,
-    total: 6,
-    difficulty: "Intermediate",
-    category: "Infiltration",
-    href: "/levels/2",
-  },
-  {
-    levelNumber: 3,
-    name: "The Inside Job",
-    description: "Lift the code off the guard's terminal.",
-    current: 1,
-    total: 8,
-    difficulty: "Advanced",
-    category: "Cracking",
-    href: "/levels/3",
-  },
+/** Cards for levels that aren't built yet. Playable levels come from app/levels/_missions. */
+const UPCOMING: LevelData[] = [
   {
     levelNumber: 4,
     name: "The Vault",
@@ -53,4 +26,18 @@ export const initialLevels: LevelData[] = [
     href: null,
     locked: true,
   },
+];
+
+export const initialLevels: LevelData[] = [
+  ...MISSIONS.map(({ card }) => ({
+    levelNumber: card.number,
+    name: card.name,
+    description: card.description,
+    current: card.current,
+    total: card.total,
+    difficulty: card.difficulty,
+    category: card.category,
+    href: `/levels/${card.number}`,
+  })),
+  ...UPCOMING,
 ];
