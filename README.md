@@ -383,7 +383,7 @@ Both reads/writes are wrapped in `try/catch`, so the app still works in private 
 - **Duplicated engine code.** Each level inlines its own Pyodide loader, types, and sprites; `app/game/` and `app/levels/{hooks,lib}` are older/unused engines. Consolidating onto one shared engine is the next cleanup.
 - **Pyodide needs the network.** Levels load v0.23.4 from jsDelivr, while a self-hosted copy sits unused in `public/pyodide/`. Switching to the local copy would make offline/demo-venue play reliable.
 - **Level 2 board themes** in `boards/` aren't wired into the level yet.
-- **Planning Room** is UI only, using placeholder data from `workspace/data/mock.ts`.
+- **Planning Room** is UI only, using placeholder data from `workspace/data/mock.ts`. The plan to turn it into a real in-browser pygame IDE with built-in git and tickets is in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) and [docs/ROADMAP.md](docs/ROADMAP.md).
 - **Housekeeping:** both `package-lock.json` and `pnpm-lock.yaml` exist; `phaser` is installed but unused.
 
 See [PROJECT_STATUS.md](PROJECT_STATUS.md) for a longer status snapshot.
